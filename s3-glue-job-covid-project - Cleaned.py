@@ -2,6 +2,7 @@ import boto3
 import pandas as pd
 from io import StringIO #python3; python2: BytesI0
 import time
+import redshift_connector as rs_conn # using redshift connector library instead of psycopg2 to connect to redshift
 
 ############# CONNECTING TO ATHENA + QRY DATA #############
 
@@ -241,11 +242,6 @@ factCovid.shape # tells the rows + cols in the table
         aws_secret_access_key=AWS_SECRET_KEY
     )
 
-    try:
-        from StringIO import StringIO
-    except ImportError:
-        from io import StringIO
-
 # decided to create separate csv_buffer objects because i was getting a bug where the buffer seemed to just concat instead of clearing between runs
 
     factCovid_csv_buffer = StringIO()
@@ -297,9 +293,7 @@ factCovid.shape # tells the rows + cols in the table
     dimHospitalsql = pd.io.sql.get_schema(dimHospital.reset_index(), 'dimHospital')
     dimHospitalsql = (''.join(dimHospitalsql))
 
-# using redshift connector library instead of psycopg2 to connect to redshift
-
-    import redshift_connector as rs_conn
+# connecting to redshift
 
     conn = rs_conn.connect(
             host='redshift-cluster-1.###.us-east-1.redshift.amazonaws.com',
