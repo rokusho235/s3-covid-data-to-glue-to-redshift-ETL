@@ -1,6 +1,6 @@
 ﻿# s3-covidData-to-glue-to-redshift-ETL
 
-ETL Pipeline: S3 > Glue Crawlers > Athena > Glue Python Job > S3 > Redshift
+ETL Pipeline: S3 (raw covid data: json + csv files) > Glue Crawlers > Athena > Glue Python Job > S3 (staging dimensional data) > Redshift
 
 ### Architecture Diagram
 
