@@ -8,10 +8,10 @@ ETL Pipeline: S3 > Glue Crawlers > Athena > Glue Python Job > S3 > Redshift
 
 ### Services Used
 
-1.  **S3**
-2.  **Glue**
-3.  **Athena**
-4.  **Redshift**
+1.  **Amazon S3**
+2.  **AWS Glue**
+3.  **Amazon Athena**
+4.  **Amazon Redshift**
 
 ### OLTP Table Data Modeling
 
